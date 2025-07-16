@@ -1,0 +1,5 @@
+patient,sex,status,sample,lane,fastq_1,fastq_2
+Patient_17,XX,0,Patient_17_Normal,lane_1,/mnt/share_uni_lehrstuhldaten/ftp/dintner/DNPM_benchmark_trial_2023/DNPM_WES_FASTQ.final.dataset/merged_fastq/17-N_R1_001.fastq.gz,/mnt/share_uni_lehrstuhldaten/ftp/dintner/DNPM_benchmark_trial_2023/DNPM_WES_FASTQ.final.dataset/merged_fastq/17-N_R2_001.fastq.gz
+Patient_17,XX,1,Patient_17_Tumour,lane_1,/mnt/share_uni_lehrstuhldaten/ftp/dintner/DNPM_benchmark_trial_2023/DNPM_WES_FASTQ.final.dataset/merged_fastq/17_R1_001.fastq.gz,/mnt/share_uni_lehrstuhldaten/ftp/dintner/DNPM_benchmark_trial_2023/DNPM_WES_FASTQ.final.dataset/merged_fastq/17_R2_001.fastq.gz
+
+
