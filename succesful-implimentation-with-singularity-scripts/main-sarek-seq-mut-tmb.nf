@@ -12,7 +12,7 @@ process sarek_pipeline {
     script:
     """
     echo "Running nf-core/sarek pipeline..."
-    nextflow run nf-core/sarek -r 3.5.1 -profile docker \\
+    nextflow run nf-core/sarek -r 3.5.1 -profile singularity \\
       --input /home/obiorach/test-work-sarek/samplesheet.csv \\
       --outdir /home/obiorach/test-work-sarek/WES-DNPM-RESULTS \\
       --genome hg19 \\
