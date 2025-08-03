@@ -73,9 +73,14 @@ alias nextflow=~/bin/nextflow  # Point to correct version
 # Reload configuration
 source ~/.bashrc
 ```
+## 🐳Docker Implementation
+```bash
+#Pull SigProfiler environment
+docker pull chumawinner/sigprofiler-env:latest
 
-## Docker Implementation
-
+#Pull Sequenza pipeline
+docker pull chumawinner/sequenza-pipeline:latest
+```
 ### 🐳Initial Docker Setup 
 
 #### 🐳Docker Configuration (nextflow.config)
@@ -119,6 +124,13 @@ params {
     outdir = 'results'
 }
 ```
+
+```bash
+# Use in nextflow.config if you are pulling my Docker-hub 
+container = 'chumawinner/sigprofiler-env:latest'
+container = 'chumawinner/sequenza-pipeline:latest'
+```
+
 
 ### 🐳Docker Issues and Solutions
 
@@ -206,6 +218,11 @@ singularity build containers/sigprofiler-env.sif docker-daemon://sigprofiler-env
 ls -lh containers/
 singularity exec containers/sequenza-pipeline.sif ls /app/
 singularity exec containers/sigprofiler-env.sif python --version
+
+# or this if you pulled from my Docker-hub, then just convert from my hub
+# Convert to Singularity containers
+singularity build sigprofiler-env.sif docker://chumawinner/sigprofiler-env:latest
+singularity build sequenza-pipeline.sif docker://chumawinner/sequenza-pipeline:latest
 ```
 
 ### Singularity Configuration
