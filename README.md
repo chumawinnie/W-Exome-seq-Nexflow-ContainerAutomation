@@ -5,7 +5,7 @@ This pipeline was developed for automated somatic variant analysis in WES, WGS, 
 # Project developed at: University Hospital Augsburg Bioinformatics Core Facility
 Principal Investigator: Dr. Jan Meier-Kolthoff, 
  
-#Pipeline Developer: Chukwuma Winner Obiora
+Pipeline Developer: Chukwuma Winner Obiora
 # Nextflow Bioinformatics Pipeline Documentation
 
 ## Overview
