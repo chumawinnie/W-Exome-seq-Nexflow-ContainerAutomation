@@ -302,6 +302,19 @@ ls sigprofiler_reference/
 # Output: chromosomes  exome  sequences  transcripts  tsb  tsb_BED
 ```
 
+**Important**: The GC wiggle file is essential for accurate copy number analysis in Sequenza, as it corrects for GC content bias that can affect read depth calculations and CNV detection accuracy.
+
+The GC wiggle file is used for GC content normalization. Run this command to generate it:
+
+```bash
+sequenza-utils gc_wiggle -w 50 --fasta ~/whole-Exon-single-seq/ref-genome/index/hg19.fa -o ~/test-work-sarek/sequenza-wig-file/hg19.gc50Base.wig.gz
+```
+
+- **`-w 50`**: Specifies a window size of 50 base pairs.
+- **`--fasta`**: Path to the reference genome in FASTA format.
+- **`-o`**: Output path for the GC wiggle file.
+
+This command generates `hg19.gc50Base.wig.gz`
 
 ### downlaod the genome from genInstall and host locally for singularity :
 ```bash
@@ -330,6 +343,8 @@ cp -r /home/obiorach/miniconda3/lib/python3.12/site-packages/SigProfilerMatrixGe
 │           ├── transcripts
 │           ├── tsb
 │           └── tsb_BED
+├── sequenza-wig-file/
+│   └── hg19.gc50Base.wig.gz                                     ✅ GC WIGGLE FILE
 ├── containers/
 │   ├── sequenza-pipeline.sif
 │   └── sigprofiler-env.sif
