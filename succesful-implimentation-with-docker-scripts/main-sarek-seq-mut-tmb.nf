@@ -92,7 +92,32 @@ process sequenza_analysis {
     """
 }
 
-// ========= PROCESS 4: TMB Calculation =================
+// ========= PROCESS 4: Sequenza CNV-HRD Analysis ==============
+process sequenza_cnv_hrd_analysis {
+    container 'sequenza-pipeline'
+    containerOptions '--entrypoint=""'
+    publishDir "${params.outdir}/sequenza-cnv-hrd", mode: 'copy'
+
+    input:
+    path sequenza_done
+
+    output:
+    path 'cnv-hrd.done', emit: cnv_hrd_done
+    path 'sequenza-output/**', emit: cnv_hrd_results, optional: true
+
+    script:
+    """
+    echo "Running Sequenza CNV-HRD analysis..."
+    
+    # Run the comprehensive sequenza CNV-HRD processor
+    Rscript /app/sequenza-CNV-A-HRD-processor.R
+    
+    echo "Sequenza CNV-HRD analysis completed successfully!"
+    touch cnv-hrd.done
+    """
+}
+
+// ========= PROCESS 5: TMB Calculation =================
 process tmb_calculation {
     input:
     path mutational_done
@@ -109,7 +134,7 @@ process tmb_calculation {
     """
 }
 
-// ========= PROCESS 5: Final Message ===================
+// ========= PROCESS 6: Final Message ===================
 process final_message {
     input:
     tuple path(tmb_done_file), path(sequenza_done_file)
@@ -119,7 +144,7 @@ process final_message {
     echo ""
     echo "All pipelines completed successfully!"
     echo "Sequenza output available at: /home/obiorach/test-work-sarek/WES-DNPM-RESULTS/sequenza-output"
-    echo "🎖️ Pipeline chain"
+    echo " "
     """
 }
 
@@ -131,10 +156,11 @@ workflow {
 
     sarek_result = sarek_pipeline(custom_config_file)
     mut_sig_result = mutational_signature(sarek_result.sarek_done, mut_sig_script)
-    sequenza_result = sequenza_analysis(sarek_result.sarek_done)
+    sequenza_result = sequenza_analysis(sarek_result.sarek_done)  // Python script
+    cnv_hrd_result = sequenza_cnv_hrd_analysis(sequenza_result.sequenza_done)  // R script
     tmb_result = tmb_calculation(mut_sig_result.mut_sig_done, tmb_cal_script)
 
-    // Combine both completion signals for final message
-    all_done = tmb_result.tmb_done.combine(sequenza_result.sequenza_done)
+    // Combine all completion signals for final message
+    all_done = tmb_result.tmb_done.combine(cnv_hrd_result.cnv_hrd_done)
     final_message(all_done)
 }
