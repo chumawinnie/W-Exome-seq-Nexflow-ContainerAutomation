@@ -3,7 +3,8 @@
 This pipeline was developed for automated somatic variant analysis in WES, WGS, and Panel sequencing data. It includes variant calling, CNV detection using Sequenza, TMB calculation, and mutational signature extraction and fitting. The pipeline can be executed using either Docker or Singularity, making it reproducible and portable for clinical environments.
 
 Project developed at: University Hospital Augsburg Bioinformatics Core Facility
-Principal Investigator: Dr. Jan Meier-Kolthoff 
+Principal Investigator: Dr. Jan Meier-Kolthoff, 
+ 
 Pipeline Developer: Chukwuma Winner Obiora
 # Nextflow Bioinformatics Pipeline Documentation
 
