@@ -301,22 +301,33 @@ cp -r /home/obiorach/miniconda3/lib/python3.12/site-packages/SigProfilerMatrixGe
 
 #### Key Directory Structure:
 ```
-~/test-work-sarek/
-├── sigprofiler_reference -> sigprofiler-genome/references/GRCh37  ✅ SYMLINK
+~/test-work-sarek/                                                 #HOME-FOLDER
+├── sigprofiler_reference -> sigprofiler-genome/references/GRCh37  # SYMLINK
 ├── sigprofiler-genome/
 │   └── references/
-│       └── GRCh37/                                              ✅ ACTUAL DATA
+│       └── GRCh37/                                              # ACTUAL DATA
 │           ├── chromosomes
 │           ├── exome
 │           ├── sequences
 │           ├── transcripts
 │           ├── tsb
 │           └── tsb_BED
+├── sequenza-wig-file/
+│   └── hg19.gc50Base.wig.gz                                     # GC WIGGLE FILE
 ├── containers/
-│   ├── sequenza-pipeline.sif
-│   └── sigprofiler-env.sif
+│   ├── sequenza-pipeline.sif                                    # SEQUENZA SINGULARITY
+│   └── sigprofiler-env.sif                                      # SIGPROFILER SINGULARITY
 ├── main-sarek-seq-mut-tmb.nf
-└── nextflow.config
+├── nextflow.config
+├── samplesheet.csv                                              # SAMPLE METADATA
+├── sequenza-CNV-A-HRD-processor.R                               # CNV/HRD ANALYSIS
+├── sequenza_preprocess.py                                       # SEQUENZA PREPROCESSING
+├── tmb_cal.py                                                   # TMB CALCULATION
+├── run_all_sequenza.py                                          # SEQUENZA RUNNER
+├── Mutation-Signatures.py                                       # SIGNATURE ANALYSIS
+├── custom.config                                                # CUSTOM CONFIG
+├── Dockerfile.signature                                         # MUTATIONAL-SIGNATURE DOCKER CONTAINER
+└── Dockerfile                                                   # COPY-NUMBER/HRD DOCKER CONTAINER
 ```
 
 ## Performance Optimization
