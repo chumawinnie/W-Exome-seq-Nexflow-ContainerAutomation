@@ -301,7 +301,7 @@ cp -r /home/obiorach/miniconda3/lib/python3.12/site-packages/SigProfilerMatrixGe
 
 #### Key Directory Structure:
 ```
-~/test-work-sarek/                                                 #HOME-FOLDER
+~/test-work-sarek/                                                 # HOME-FOLDER
 ├── sigprofiler_reference -> sigprofiler-genome/references/GRCh37  # SYMLINK
 ├── sigprofiler-genome/
 │   └── references/
@@ -314,18 +314,18 @@ cp -r /home/obiorach/miniconda3/lib/python3.12/site-packages/SigProfilerMatrixGe
 │           └── tsb_BED
 ├── sequenza-wig-file/
 │   └── hg19.gc50Base.wig.gz                                     # GC WIGGLE FILE
-├── containers/
+├── containers/                                                  # SINGULARITY-APPTIANERS
 │   ├── sequenza-pipeline.sif                                    # SEQUENZA SINGULARITY
 │   └── sigprofiler-env.sif                                      # SIGPROFILER SINGULARITY
-├── main-sarek-seq-mut-tmb.nf
-├── nextflow.config
+├── main-sarek-seq-mut-tmb.nf                                    # Nextflow MAIN.nf script
+├── nextflow.config                                              # NEXTFLOW-CONTROL PANEL
 ├── samplesheet.csv                                              # SAMPLE METADATA
 ├── sequenza-CNV-A-HRD-processor.R                               # CNV/HRD ANALYSIS
 ├── sequenza_preprocess.py                                       # SEQUENZA PREPROCESSING
 ├── tmb_cal.py                                                   # TMB CALCULATION
 ├── run_all_sequenza.py                                          # SEQUENZA RUNNER
 ├── Mutation-Signatures.py                                       # SIGNATURE ANALYSIS
-├── custom.config                                                # CUSTOM CONFIG
+├── custom.config                                                # CUSTOM CONFIG(sarek-workflow)
 ├── Dockerfile.signature                                         # MUTATIONAL-SIGNATURE DOCKER CONTAINER
 └── Dockerfile                                                   # COPY-NUMBER/HRD DOCKER CONTAINER
 ```
@@ -624,22 +624,22 @@ ls -la ~/test-work-sarek/WES-DNPM-RESULTS/
 ### Results Directory Structure
 ```
 WES-DNPM-RESULTS/
-├── annotation/               # VEP annotations
-├── csv/                     # Summary CSV files
-├── multiqc/                 # Quality control reports
-├── preprocessing/           # Aligned and processed BAMs
-├── reports/                 # Analysis reports
-├── sequenza-output/         # CNV analysis results
+├── variant_calling/                           # Mutect2 caller VCF files
+├── annotation/                                # VEP annotations
+├── csv/                                       # Summary CSV files
+├── multiqc/                                   # Quality control reports
+├── preprocessing/                             # Aligned and processed BAMs
+├── reports/                                   # Analysis reports
+├── sequenza-output/                           # CNV analysis results
 │   └── Patient_17/
 │       └── sequenza_files/
-│           ├── hrd_metrics.txt                    # HRD scores
-│           ├── Patient_17_segments.txt            # CNV segments
-│           ├── Patient_17_chromosome_view.pdf     # Visualizations
+│           ├── hrd_metrics.txt                # HRD scores
+│           ├── Patient_17_segments.txt        # CNV segments
+│           ├── Patient_17_chromosome_view.pdf # Visualizations
 │           └── ...
-├── sequenza-cnv-hrd/        # CNV-HRD post-processing
-├── TMB-results/             # Tumor mutational burden
-├── variant_calling/         # Called variants (VCF files)
-└── pipeline_info/           # Execution reports
+├── sequenza-cnv-hrd/                          # CNV-HRD post-processing
+├── TMB-results/                               # Tumor mutational burden
+└── pipeline_info/                             # Execution reports
 ```
 
 ## Key Files and Their Purposes
